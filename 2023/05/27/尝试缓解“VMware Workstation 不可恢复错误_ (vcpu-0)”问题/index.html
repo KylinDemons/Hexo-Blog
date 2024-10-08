@@ -1,0 +1,167 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题 | Gypsophila的小破站</title><meta name="author" content="Gypsophila"><meta name="copyright" content="Gypsophila"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="AMD CPU上的“VMware Workstation 不可恢复错误_ (vcpu-0)”问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题">
+<meta property="og:url" content="https://www.kylindemons.fun/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Gypsophila的小破站">
+<meta property="og:description" content="AMD CPU上的“VMware Workstation 不可恢复错误_ (vcpu-0)”问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.kylindemons.fun/img/post/cover_img/VMwareWorkstation.png">
+<meta property="article:published_time" content="2023-05-27T12:45:43.000Z">
+<meta property="article:modified_time" content="2023-05-27T12:45:43.000Z">
+<meta property="article:author" content="Gypsophila">
+<meta property="article:tag" content="VMware Workstation">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.kylindemons.fun/img/post/cover_img/VMwareWorkstation.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://www.kylindemons.fun/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        if (name && globalFn[key][name]) return
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: undefined,
+  isToc: true,
+  postUpdate: '2023-05-27 20:45:43'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/post/top_img/VMwareWorkstation.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Gypsophila的小破站</span></a><a class="nav-page-title" href="/"><span class="site-name">尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-27T12:45:43.000Z" title="发表于 2023-05-27 20:45:43">2023-05-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-27T12:45:43.000Z" title="更新于 2023-05-27 20:45:43">2023-05-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/VMware/">VMware</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="故障现象"><a href="#故障现象" class="headerlink" title="故障现象"></a>故障现象</h1><p>报错如下图所示，该故障很可能发生在虚拟机刚启动、切换正在运行的虚拟机的标签页、多个虚拟机运行负载较高时。不管虚拟机系统是Windows还是Linux，这个问题会出现在任何一个拥有图形化界面的客户机操作系统上，纯命令行的Linux却很少触发这个问题。<strong>最重要的是，经过搜索，该故障几乎全发生在AMD处理器（带核显）+NVIDIA独显组合的电脑上。</strong></p>
+<p>VMware Workstation 不可恢复错误: (vcpu-0)<br><strong>VERIFY bora\vmx\main\hostWin32.c:559</strong><br><strong>（也可能是VERIFY bora\vmx\main\hostWin32.c:569）</strong><br>日志文件位于“D:\Virtual Machines\Windows 7\vmware.log”中。<br>您可以请求支持。<br>要收集数据提交给 VMware 技术支持，请选择“帮助”菜单中的“收集支持数据”。<br>也可以直接在 Workstation 文件夹中运行“vm-support”脚本。<br>我们将根据您的技术支持权利做出回应。<br><img src="https://img-blog.csdnimg.cn/753e748e3aa0454d8ed3ebc7fb32732f.jpeg#pic_center" alt="报错图示"></p>
+<h1 id="故障分析"><a href="#故障分析" class="headerlink" title="故障分析"></a>故障分析</h1><p>先大致说说笔者的笔记本电脑配置：<strong>AMD锐龙4800H处理器+NVIDIA GTX1650Ti显卡</strong>+32GB运行内存。<br>这个故障现象大约在两年前就已出现（之前虚拟机运行一切正常），那时使用的是刚发布的测试版Windows11，以为是当时的VMware Workstation 16不兼容最新的Win11所致，于是没放在心上，但这个错误基本一启动虚拟机就出现，根本没法正常使用。本想降级Win10再看看这个问题还会不会出现，但因为忙一直没重装系统。后来为了临时解决使用的需求，启用了Win自带的Hyper-V平台搭建测试虚拟机。过程中无意间启动了VMware Workstation一直存在问题的虚拟机（自从15版本之后，VMware Workstation支持与Hyper-V并存并同时运行），<strong>却发现该故障消失了！</strong> 后来经过多次测试，确实在Hyper-V启用的情况下，该问题会消失。但这并不是一个完美的解决方案，因为在启用了Hyper-V的情况下，VMware Workstation的性能会下降，最重要的是嵌套虚拟化功能会失效（即虚拟化引擎引擎下的“虚拟化Intel VT-x&#x2F;EPT或AMD-V&#x2F;RVI”功能），对于经常测试vSphere等虚拟化平台的笔者来说，这是无法忍受的。但没办法，只能这样将就用着。<br><img src="https://img-blog.csdnimg.cn/5590c5156a114277ba10ac945de06fb9.png#pic_center" alt="在Hyper-V启用的情况下开启这些功能会导致虚拟机无法启动"></p>
+<p>后来等到Windows11正式版发布、VMware Workstation 17发布，甚至重装系统降级Win10用非常干净的系统测试，<strong>该问题依旧存在！</strong> 没办法，笔者只能在网上查找解决方案，但搜索到的“VMware Workstation 不可恢复错误”的报错信息似乎都与笔者遇到的没有关系，很多是安装黑苹果时遇到的，他们的解决方案笔者也都一一尝试，并没有用（清一色的都是开启BIOS的VT虚拟化引擎，但笔者的笔记本在买回来后第一时间就开启了这个选项，不可能是这个问题）。<br>一时似乎陷入了死胡同，折腾一番无果后也没再管它。后来笔者买了一台显示器，用Type-C转DP独显输出到显示器上用，<strong>竟然发现在不开启Hyper-V的情况下VMware Workstation运行虚拟机不再报这个错了！</strong> 本来以为问题就此解决，不过随后发现，如果运行多个虚拟机且负载较大，虽然不会再报错，但会出现一个非常奇怪的问题：显示器期间会突然黑屏（像更新显卡驱动时的那种短暂黑屏），然后宿主机以及虚拟机会假死，严重到会直接死机。看来这个问题还是没有完全解决。<br>笔者拔了显示器，运行一台虚拟机就会报错的故障又回来了，很是让人无语。冷静下来想想，这个问题似乎与核显以及显卡驱动程序有关系，因为用独显输出的显示器运行虚拟机（笔者的笔记本不支持纯粹的独显直连输出，只有在外接显示器且关闭内屏的情况下才算是“独显输出”）问题似乎就会缓解，再加上笔者期间尝试过用Virtual Box运行虚拟机，在Windows虚拟机系统上安装Virtual Box的增强工具（类似于VMware的VMTools）并重启后，Windows虚拟机某些界面会花屏或显示不正常，比如任务栏，开始，系统设置等。仔细观察观察这些界面，笔者发现了一个共性，那就是这些界面无一例外的具有透明特效，需要用显卡渲染。比如Windows 7虚拟机，在刚装完系统后使用一切正常，一旦安装完增强工具后具有Windows Aero特效的部分就花屏（增强工具具有虚拟显卡驱动）<br>得，似乎找到原因了，问题好像出在虚拟机的虚拟显卡渲染上，为了验证这个猜想，我关闭了VMware Workstation的“加速3D图形”功能：<br><img src="https://img-blog.csdnimg.cn/359eae999af342a9a07826b332dd4b64.png#pic_center" alt="关闭3D加速"><br>结果发现，虚拟机崩溃报错的次数确实少了很多（至少短时间没有复现，没有足够时间的验证，不能保证取消这个选项问题就能解决），不过这会让虚拟机的图形性能大大降低，这并不是一个好方法。<br>但至少有了头绪，问题的根源应该就在宿主机的显卡驱动上，后来经过无意的摸索，发现只要同时启用AMD显卡控制面板里的“帧数目标控制”功能、NVIDIA控制面板的“后台应用程序最大帧率”以及“最大帧速率”功能，这个错误就离奇的减少了（<strong>笔者在测试的过程中发现这个错误还可能在某些情况下触发，但已经不是严重影响使用的程度了，所以本文标题并不是“解决”，而是“缓解”</strong>）：<br><img src="https://img-blog.csdnimg.cn/248ba5403f484ce2be27104640f5d084.png#pic_center" alt="开启NVIDIA“后台应用程序最大帧率”"><br><img src="https://img-blog.csdnimg.cn/467e5d115b85430f9a5ffcd412f8fe1c.png#pic_center" alt="开启AMD“帧数目标控制”"><br><img src="https://img-blog.csdnimg.cn/1e676c8781f0480ba5e1cd93007e0eae.png#pic_center" alt="开启NVIDIA“最大帧速率”"></p>
+<h1 id="故障总结"><a href="#故障总结" class="headerlink" title="故障总结"></a>故障总结</h1><p>本故障应该是由于AMD和NVIDIA的某次显卡驱动更新迭代变更后，两者的驱动在某些有关联的部分下出了问题，影响到了虚拟机的虚拟显示渲染，和VMware Workstation的关系不大。</p>
+<h1 id="解决方案总结"><a href="#解决方案总结" class="headerlink" title="解决方案总结"></a>解决方案总结</h1><ol>
+<li><p>在没有嵌套虚拟化的需求下，<strong>首选启用“Windows虚拟机平台”，这一点尤其利好本来就使用WSL、WSA、Docker Desktop、Hyper-V功能的朋友们。</strong><br> <img src="https://img-blog.csdnimg.cn/c53482798c444e9b9beab73663f465da.png#pic_center" alt="启用图中选项"></p>
+</li>
+<li><p>根据“故障分析”部分最后一点提到的方案，<strong>在AMD显卡控制面板里的“帧数目标控制”功能、NVIDAI控制面板的“后台应用程序最大帧率”以及“最大帧速率”功能中来回启用停用切换</strong>，并不一定是这三者同时启用就能缓解问题，有可能只是启用其中一个或两个，根据最小化原则，建议依此启用进行尝试（启用后记得重启电脑生效），而其帧率数值应调到最大，避免影响游戏性能（只有在三者都启用后仍然不能缓解问题的情况下才调节其数值到屏幕刷新率等常见数值下进行尝试）</p>
+</li>
+<li><p>关闭虚拟化应用的“图形3D加速”功能。（不推荐，可能影响性能和虚拟机图形界面的显示）</p>
+</li>
+<li><p>尝试将AMD显卡驱动、NVIDIA显卡驱动降级到2020年左右的版本（不推荐，会影响系统稳定性与游戏性能表现，尤其是在使用最新Windows11操作系统的情况下）</p>
+</li>
+</ol>
+<p><em><strong>这一路，真的是耗时又辛苦。。</strong></em></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://www.kylindemons.fun">Gypsophila</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://www.kylindemons.fun/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/">https://www.kylindemons.fun/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">著作权归作者所有。商业转载请联络作者获得授权，非商业转载请注明出处</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/VMware-Workstation/">VMware Workstation</a></div><div class="post-share"><div class="social-share" data-image="/img/post/cover_img/VMwareWorkstation.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="next-post pull-full" href="/2022/05/27/%E8%A7%A3%E5%86%B3KVM%E6%97%A0%E6%B3%95%E5%9C%A8NTFS%E5%88%86%E5%8C%BA%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9AProcess%20exited%20while%20connecting%20to%20monitor_%20Permission%20Denied/" title="解决KVM无法在NTFS分区上建立虚拟机问题"><img class="cover" src="/img/post/cover_img/kvm-logo.png" onerror="onerror=null;src='/img/error-img.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">解决KVM无法在NTFS分区上建立虚拟机问题</div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Gypsophila</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/KylinDemons" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:KylinDemons@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E7%8E%B0%E8%B1%A1"><span class="toc-number">1.</span> <span class="toc-text">故障现象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text">故障分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%85%E9%9A%9C%E6%80%BB%E7%BB%93"><span class="toc-number">3.</span> <span class="toc-text">故障总结</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">解决方案总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/" title="尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题"><img src="/img/post/cover_img/VMwareWorkstation.png" onerror="this.onerror=null;this.src='/img/error-img.jpg'" alt="尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题"/></a><div class="content"><a class="title" href="/2023/05/27/%E5%B0%9D%E8%AF%95%E7%BC%93%E8%A7%A3%E2%80%9CVMware%20Workstation%20%E4%B8%8D%E5%8F%AF%E6%81%A2%E5%A4%8D%E9%94%99%E8%AF%AF_%20(vcpu-0)%E2%80%9D%E9%97%AE%E9%A2%98/" title="尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题">尝试缓解“VMware Workstation 不可恢复错误_ (vcpu-0)”问题</a><time datetime="2023-05-27T12:45:43.000Z" title="发表于 2023-05-27 20:45:43">2023-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/27/%E8%A7%A3%E5%86%B3KVM%E6%97%A0%E6%B3%95%E5%9C%A8NTFS%E5%88%86%E5%8C%BA%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9AProcess%20exited%20while%20connecting%20to%20monitor_%20Permission%20Denied/" title="解决KVM无法在NTFS分区上建立虚拟机问题"><img src="/img/post/cover_img/kvm-logo.png" onerror="this.onerror=null;this.src='/img/error-img.jpg'" alt="解决KVM无法在NTFS分区上建立虚拟机问题"/></a><div class="content"><a class="title" href="/2022/05/27/%E8%A7%A3%E5%86%B3KVM%E6%97%A0%E6%B3%95%E5%9C%A8NTFS%E5%88%86%E5%8C%BA%E4%B8%8A%E5%BB%BA%E7%AB%8B%E8%99%9A%E6%8B%9F%E6%9C%BA%EF%BC%8C%E6%8A%A5%E9%94%99%EF%BC%9AProcess%20exited%20while%20connecting%20to%20monitor_%20Permission%20Denied/" title="解决KVM无法在NTFS分区上建立虚拟机问题">解决KVM无法在NTFS分区上建立虚拟机问题</a><time datetime="2022-05-27T08:58:21.000Z" title="发表于 2022-05-27 16:58:21">2022-05-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/18/%E8%A7%A3%E5%86%B3VirtualBox%20Linux%E7%89%88%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8F%90%E7%A4%BA%E2%80%9C%E8%8E%B7%E5%8F%96VirtualBox%20COM%E5%AF%B9%E8%B1%A1%E5%A4%B1%E8%B4%A5%E2%80%9D%EF%BC%8C%E5%B9%B6%E6%8A%A5%E9%94%99%EF%BC%9ANS_BASE_STREAM_WOULD_BLOCK(0x80470007)/" title="解决VirtualBox Linux版无法启动的问题"><img src="/img/post/cover_img/virtualbox.jpg" onerror="this.onerror=null;this.src='/img/error-img.jpg'" alt="解决VirtualBox Linux版无法启动的问题"/></a><div class="content"><a class="title" href="/2022/04/18/%E8%A7%A3%E5%86%B3VirtualBox%20Linux%E7%89%88%E6%97%A0%E6%B3%95%E5%90%AF%E5%8A%A8%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%8C%E6%8F%90%E7%A4%BA%E2%80%9C%E8%8E%B7%E5%8F%96VirtualBox%20COM%E5%AF%B9%E8%B1%A1%E5%A4%B1%E8%B4%A5%E2%80%9D%EF%BC%8C%E5%B9%B6%E6%8A%A5%E9%94%99%EF%BC%9ANS_BASE_STREAM_WOULD_BLOCK(0x80470007)/" title="解决VirtualBox Linux版无法启动的问题">解决VirtualBox Linux版无法启动的问题</a><time datetime="2022-04-18T07:05:36.000Z" title="发表于 2022-04-18 15:05:36">2022-04-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/04/09/%E5%9C%A8Fedora%E4%B8%AD%E5%85%A8%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%90%8D%E8%8B%B1%E4%BC%9F%E8%BE%BE%E9%A9%B1%E5%8A%A8%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E4%BB%A5%E6%94%AF%E6%8C%81%E5%AE%89%E5%85%A8%E5%90%AF%E5%8A%A8%EF%BC%88Secure%20Boot%EF%BC%89/" title="在Fedora中全自动签名英伟达驱动内核模块以支持安全启动"><img src="/img/post/cover_img/Automatically_signing_nVidia_kernel_module_in_Fedora.png" onerror="this.onerror=null;this.src='/img/error-img.jpg'" alt="在Fedora中全自动签名英伟达驱动内核模块以支持安全启动"/></a><div class="content"><a class="title" href="/2022/04/09/%E5%9C%A8Fedora%E4%B8%AD%E5%85%A8%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%90%8D%E8%8B%B1%E4%BC%9F%E8%BE%BE%E9%A9%B1%E5%8A%A8%E5%86%85%E6%A0%B8%E6%A8%A1%E5%9D%97%E4%BB%A5%E6%94%AF%E6%8C%81%E5%AE%89%E5%85%A8%E5%90%AF%E5%8A%A8%EF%BC%88Secure%20Boot%EF%BC%89/" title="在Fedora中全自动签名英伟达驱动内核模块以支持安全启动">在Fedora中全自动签名英伟达驱动内核模块以支持安全启动</a><time datetime="2022-04-09T15:30:05.000Z" title="发表于 2022-04-09 23:30:05">2022-04-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/02/19/%E5%BF%85%E8%BF%87SafetyNet%EF%BC%81%E4%BB%A5MIUI%E5%BC%80%E5%8F%91%E7%89%88%E7%B3%BB%E7%BB%9F%E4%B8%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3Android%E8%AE%BE%E5%A4%87%E9%80%9A%E8%BF%87SafetyNet%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95/" title="必过SafetyNet！"><img src="/img/post/cover_img/safetynet-pass.png" onerror="this.onerror=null;this.src='/img/error-img.jpg'" alt="必过SafetyNet！"/></a><div class="content"><a class="title" href="/2021/02/19/%E5%BF%85%E8%BF%87SafetyNet%EF%BC%81%E4%BB%A5MIUI%E5%BC%80%E5%8F%91%E7%89%88%E7%B3%BB%E7%BB%9F%E4%B8%BA%E4%BE%8B%E8%AF%A6%E8%A7%A3Android%E8%AE%BE%E5%A4%87%E9%80%9A%E8%BF%87SafetyNet%E6%A0%A1%E9%AA%8C%E6%96%B9%E6%B3%95/" title="必过SafetyNet！">必过SafetyNet！</a><time datetime="2021-02-19T09:01:16.000Z" title="发表于 2021-02-19 17:01:16">2021-02-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Gypsophila</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
